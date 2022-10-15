@@ -1,9 +1,13 @@
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 public abstract class Conta implements IConta{
 
-    LocalDateTime data = 
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private Date data;
 
     protected static int AGENCIA_PADRAO = 1;
 
@@ -58,8 +62,15 @@ public abstract class Conta implements IConta{
     }
     @Override
     public void emprestimo(double valor, int parcelas){
-        if(saldo > 1200){
-
+        if(saldo < 1200){
+            JUROS = 1.04;
+        }
+        double valorParcelas = valor / parcelas;
+        double valorParcelasAtual;
+        double valorAtualizado;
+        for(int i = 0; i < parcelas; i++){
+            valorParcelasAtual =  (valorParcelas * JUROS) + valorParcelas ;
+            System.out.println("Parcela: " + (i + 1) + " - Valor R$ " + valorParcelasAtual);
         }
     }
 
