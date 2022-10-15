@@ -8,6 +8,8 @@ public class Cliente {
     private String cpf;
     private String telefone;
 
+    private Conta conta;
+
     public Cliente(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
@@ -40,5 +42,13 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 }

@@ -6,10 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public abstract class Conta implements IConta{
-
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    Calendar data = Calendar.getInstance();
-
     protected static int AGENCIA_PADRAO = 1;
 
     protected static int SEQUENCIAL = 1;
@@ -18,13 +14,13 @@ public abstract class Conta implements IConta{
 
 
     protected int agencia;
-    protected int numero;
+    protected int numeroConta;
     protected double saldo;
     protected Cliente cliente;
 
     public Conta(Cliente cliente){
         this.agencia = Conta.AGENCIA_PADRAO;
-        this.numero = SEQUENCIAL++;
+        this.numeroConta = SEQUENCIAL++;
         this.cliente = cliente;
     }
 
@@ -114,7 +110,39 @@ public abstract class Conta implements IConta{
     protected void imprimirInfosConta() {
         System.out.println(String.format("Titular: %s", cliente.getNome()));
         System.out.println(String.format("Agencia: %d", agencia));
-        System.out.println(String.format("Numero: %d", numero));
-        System.out.println(String.format("Saldo: %.2f", saldo));
+        System.out.println(String.format("Numero: %d", numeroConta));
+        System.out.println(String.format("Saldo: R$ %.2f", saldo));
+    }
+
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(int agencia) {
+        this.agencia = agencia;
+    }
+
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(int numero) {
+        this.numeroConta = numero;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
