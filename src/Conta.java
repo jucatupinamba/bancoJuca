@@ -1,8 +1,5 @@
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
 
 public abstract class Conta implements IConta{
 
@@ -86,6 +83,28 @@ public abstract class Conta implements IConta{
         }
         System.out.println();
         System.out.printf("Valor Total a Pagar: %.2f %n", soma);
+    }
+    @Override
+    public void simularInvestimento(double valor, int meses){
+        if(valor > 3000){
+            JUROS = 1.04;
+        }
+        else if(valor < 5000){
+            JUROS = 1.10;
+        }
+
+        double valorTotal = 0;
+        double soma = 0;
+
+        for(int i = 1; i < meses; i++){
+            valorTotal += (valor * Math.pow(JUROS - 1, i));
+            soma += valorTotal;
+            }
+        double rendimentoJuros = valor - soma;
+        double valorFinal = soma + valor;
+        System.out.printf("Rendimentos em juros no período: %.2f ", rendimentoJuros);
+        System.out.println();
+        System.out.printf("Valor Total a Pagar: %.2f %n", valorFinal);
     }
 
     protected void imprimirInfosConta() {

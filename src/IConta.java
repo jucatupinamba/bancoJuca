@@ -10,5 +10,7 @@ public interface IConta {
 
     void simularEmprestimo(double valor, int parcelas);
 
+    void simularInvestimento(double valor, int meses);
+
 
 }

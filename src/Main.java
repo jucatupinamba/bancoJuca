@@ -12,6 +12,9 @@ public class Main {
         cc.simularEmprestimo(2000, 24);
 
         cc.imprimirExtrato();
+
+        cc.simularInvestimento( 4000, 10);
+
         cp.imprimirExtrato();
 
     }
