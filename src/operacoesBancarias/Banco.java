@@ -1,3 +1,5 @@
+package operacoesBancarias;
+
 import java.util.List;
 
 public class Banco {
