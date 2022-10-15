@@ -8,7 +8,7 @@ public interface IConta {
 
     void imprimirExtrato();
 
-    void emprestimo(double valor, int parcelas);
+    void simularEmprestimo(double valor, int parcelas);
 
 
 }

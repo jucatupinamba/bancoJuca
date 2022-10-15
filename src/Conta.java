@@ -7,7 +7,7 @@ import java.util.Date;
 public abstract class Conta implements IConta{
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private Date data;
+    Calendar data = Calendar.getInstance();
 
     protected static int AGENCIA_PADRAO = 1;
 
@@ -50,7 +50,7 @@ public abstract class Conta implements IConta{
     public void transferir(double valor, Conta contaDestino) {
         if(saldo > valor && contaDestino != null) {
             if(valor > 1000){
-                JUROS = 1.03;
+                JUROS = 1.02;
             }
             saldo -= (valor * JUROS);
             this.sacar(valor);
@@ -61,17 +61,31 @@ public abstract class Conta implements IConta{
         }
     }
     @Override
-    public void emprestimo(double valor, int parcelas){
+    public void simularEmprestimo(double valor, int parcelas){
+
         if(saldo < 1200){
             JUROS = 1.04;
         }
-        double valorParcelas = valor / parcelas;
-        double valorParcelasAtual;
-        double valorAtualizado;
-        for(int i = 0; i < parcelas; i++){
-            valorParcelasAtual =  (valorParcelas * JUROS) + valorParcelas ;
-            System.out.println("Parcela: " + (i + 1) + " - Valor R$ " + valorParcelasAtual);
+        else if(saldo < 0){
+            JUROS = 1.10;
         }
+
+        double valorParcelas = valor / parcelas;
+        double valorParcelasAtual = valorParcelas;
+        double valorTotal;
+        double soma = 0;
+
+        for(int i = 0; i < parcelas; i++){
+            valorTotal = valorParcelasAtual * Math.pow(JUROS, i);
+            soma += valorTotal;
+            if(i == 0){
+                System.out.println("INFO: Primeira Parcela sem Juros!");
+                System.out.println();
+            }
+            System.out.printf("Parcela: %d - Valor R$ %.2f %n", i + 1, valorTotal);
+        }
+        System.out.println();
+        System.out.printf("Valor Total a Pagar: %.2f %n", soma);
     }
 
     protected void imprimirInfosConta() {

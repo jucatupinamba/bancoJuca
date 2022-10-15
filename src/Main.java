@@ -9,7 +9,7 @@ public class Main {
         Conta cp = new ContaPoupança(juca);
         cp.depositar(130.40);
 
-        cc.emprestimo(2000, 24);
+        cc.simularEmprestimo(2000, 24);
 
         cc.imprimirExtrato();
         cp.imprimirExtrato();
