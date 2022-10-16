@@ -6,6 +6,10 @@ import operacoesBancarias.ContaPoupanca;
 
 import java.util.Scanner;
 
+/* Desafio de Projeto Quebec Java Digital
+   Juarez Martins
+ */
+
 public class Main {
     public static void main(String[] args) {
 
