@@ -25,18 +25,23 @@ public class Banco {
     }
 
 
-    public List<Conta> listarContas(Conta contaRecebida) {
+    public List<Conta> listarContas(Conta contaRecebida) {    //método desativado - provavel erro na lógica
         Conta controle = null;
-        int numeroConta = contaRecebida.getNumeroConta();
-        for (Conta c : admConta) {
-            if(numeroConta == c.getNumeroConta()){
-                System.out.println("Conta encontrada!");
-                controle = contaRecebida;
-                c.imprimirInfosConta();
+        try {
+            int numeroConta = contaRecebida.getNumeroConta();
+            for (Conta c : admConta) {
+                if (numeroConta == c.getNumeroConta()) {
+                    System.out.println("Conta encontrada!");
+                    controle = contaRecebida;
+                    c.imprimirInfosConta();
+                }
+                if (numeroConta != c.getNumeroConta()) {
+                    System.out.println("Conta não encontrada!");
+                }
             }
-            if(numeroConta != c.getNumeroConta()){
-                System.out.println("Conta não encontrada!");
-            }
+        }
+        catch (NullPointerException e){
+            throw new NullPointerException(e.getMessage());
         }
         return Collections.singletonList(controle);
     }

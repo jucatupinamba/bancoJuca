@@ -14,5 +14,4 @@ public class ContaCorrente extends Conta {
         System.out.println("=== Extrato Operacoes Bancarias Conta Corrente ===");
         super.imprimirInfosConta();
     }
-
 }

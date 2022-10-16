@@ -100,18 +100,22 @@ public abstract class Conta implements IConta{
             valorTotal += (valor * Math.pow(JUROS - 1, i));
             soma += valorTotal;
             }
-        double rendimentoJuros = valor - soma;
+        double rendimentoJuros = valorTotal - valor;   //lógica necessita de revisão
         double valorFinal = soma + valor;
         System.out.printf("Rendimentos em juros no período: %.2f ", rendimentoJuros);
         System.out.println();
         System.out.printf("Valor Total a Pagar: %.2f %n", valorFinal);
+        System.out.println();
     }
 
     protected void imprimirInfosConta() {
+        System.out.println("===Banco Juca === Inforações da Conta ===");
+        System.out.println();
         System.out.println(String.format("Titular: %s", cliente.getNome()));
         System.out.println(String.format("Agencia: %d", agencia));
         System.out.println(String.format("Numero: %d", numeroConta));
         System.out.println(String.format("Saldo: R$ %.2f", saldo));
+        System.out.println();
     }
 
     public int getAgencia() {

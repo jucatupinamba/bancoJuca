@@ -4,7 +4,6 @@ import usuarios.Cliente;
 import operacoesBancarias.ContaCorrente;
 import operacoesBancarias.ContaPoupanca;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -22,7 +21,7 @@ public class Main {
         System.out.println("  ****************   **************");
         System.out.println(" ==== Seja Bem-Vindo Adm Bancário =====");
         System.out.println();
-        System.out.println("Cadastre um cliente: ");
+        System.out.println("  === Operação Cadastro de cliente ===");
         System.out.println();
         System.out.println("Digite 1 - Conta Corrente" + '\n' + "Digite 2 - Conta Poupança" +
                 '\n' + "Digite 0 - Encerrar Operação");
@@ -46,6 +45,9 @@ public class Main {
 
                 System.out.println("Conta criada com sucesso!");
                 contaCC.imprimirExtrato();
+                System.out.println("Digite ENTER para continuar");
+                sc.nextLine();
+                sc.nextLine();
             }
             if (num == 2) {
                 System.out.println("Digite o nome: ");
@@ -66,6 +68,9 @@ public class Main {
                 System.out.println("===Conta criada com sucesso!===");
                 System.out.println();
                 contaPP.imprimirExtrato();
+                System.out.println("Digite ENTER para continuar");
+                sc.nextLine();
+                sc.nextLine();
             }
 
             System.out.println();
@@ -77,10 +82,14 @@ public class Main {
         }
 
         System.out.println();
+        System.out.println(" === Operação Manutenção das Contas Bancárias ===");
+        System.out.println();
+        System.out.println(" Digite ENTER para continuar ");
+        sc.nextLine();
 
         System.out.println("Qual operação deseja realizar? ");
         System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                "%n4 - Simular Empréstimo %n5 - Simular Investimento %n6 - Buscar Conta " +
+                "%n4 - Simular Empréstimo %n5 - Simular Investimento " +
                 "%n0 - Finalizar Aplicação %n");
         int operacao = sc.nextInt();
 
@@ -99,13 +108,18 @@ public class Main {
                             double valor = sc.nextDouble();
                             contaCC.sacar(valor);
                             contaCC.imprimirExtrato();
-
+                            System.out.println("Digite ENTER para continuar");
+                            sc.nextLine();
+                            sc.nextLine();
                         }
                         if (contaPP.getNumeroConta() == numConta) {
                             System.out.println("Digite o valor de saque: R$ ");
                             double valor = sc.nextDouble();
                             contaPP.sacar(valor);
                             contaPP.imprimirExtrato();
+                            System.out.println("Digite ENTER para continuar");
+                            sc.nextLine();
+                            sc.nextLine();
                         }
                         break;
 
@@ -115,12 +129,18 @@ public class Main {
                             double valor = sc.nextDouble();
                             contaCC.depositar(valor);
                             contaCC.imprimirExtrato();
+                            System.out.println("Digite ENTER para continuar");
+                            sc.nextLine();
+                            sc.nextLine();
                         }
                         if (contaPP.getNumeroConta() == numConta) {
                             System.out.println("Digite o valor de depósito: R$ ");
                             double valor = sc.nextDouble();
                             contaPP.depositar(valor);
                             contaPP.imprimirExtrato();
+                            System.out.println("Digite ENTER para continuar");
+                            sc.nextLine();
+                            sc.nextLine();
                         }
                         break;
 
@@ -131,14 +151,22 @@ public class Main {
                             contaCC.sacar(valor);
                             System.out.println("Digite o numero da conta a receber  a tranferência: ");
                             int contaReceberDepo = sc.nextInt();
+
                             if (contaCC.getNumeroConta() == contaReceberDepo) {
                                 contaCC.depositar(valor);
                                 System.out.println("Depósito realizado com sucesso em Conta Corrente.");
+                                contaCC.imprimirExtrato();
+                                System.out.println("Digite ENTER para continuar");
+                                sc.nextLine();
+                                sc.nextLine();
                             }
                             if (contaPP.getNumeroConta() == contaReceberDepo) {
                                 contaPP.depositar(valor);
                                 System.out.println("Depósito realizado com sucesso em Conta Poupança.");
-
+                                contaPP.imprimirExtrato();
+                                System.out.println("Digite ENTER para continuar");
+                                sc.nextLine();
+                                sc.nextLine();
                             }
                             break;
                         }
@@ -153,12 +181,18 @@ public class Main {
                                 System.out.println("Depósito realizado com sucesso em Conta Corrente.");
                                 System.out.println();
                                 contaCC.imprimirExtrato();
+                                System.out.println("Digite ENTER para continuar");
+                                sc.nextLine();
+                                sc.nextLine();
                             }
                             if (contaPP.getNumeroConta() == contaReceberDepo) {
                                 contaPP.depositar(valor);
                                 System.out.println("Depósito realizado com sucesso em Conta Poupança.");
                                 System.out.println();
                                 contaPP.imprimirExtrato();
+                                System.out.println("Digite ENTER para continuar");
+                                sc.nextLine();
+                                sc.nextLine();
                             }
                             break;
                         }
@@ -168,6 +202,9 @@ public class Main {
                         System.out.println("Digite quantas parcelas deseja pagar: ");
                         int parcelas = sc.nextInt();
                         contaCC.simularEmprestimo(valorEmprestimo, parcelas);
+                        System.out.println("Digite ENTER para continuar");
+                        sc.nextLine();
+                        sc.nextLine();
                         break;
 
                     case 5:
@@ -176,13 +213,9 @@ public class Main {
                         System.out.println("Digite a quantidade de meses que deseja deixar o dinheiro investindo: ");
                         int meses = sc.nextInt();
                         contaCC.simularInvestimento(valorInvestimento, meses);
-                        break;
-
-                    case 6:
-                        System.out.println("Digite o número da conta que está buscando: ");
-                        int numeroConta = sc.nextInt();
-                        conta.setNumeroConta(numeroConta);
-                        admContas.listarContas(conta);
+                        System.out.println("Digite ENTER para continuar");
+                        sc.nextLine();
+                        sc.nextLine();
                         break;
 
                     case 0:
@@ -195,9 +228,14 @@ public class Main {
             }
             System.out.println("Deseja realizar outra operação? ");
             System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento %n6 - Buscar Conta " +
+                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento" +
                     "%n0 - Finalizar Aplicação %n");
             operacao = sc.nextInt();
         }
+
+        System.out.println("Obrigado por utilizar nossos serviços!");
+        System.out.println("**************************************");
+        System.out.println();
+        System.out.println(" ==== Banco Juca - Um Banco Por Você =====");
     }
 }
