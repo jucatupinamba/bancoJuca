@@ -12,6 +12,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Cliente cliente = null;
+        Conta conta = null;
         ContaCorrente contaCC = null;
         ContaPoupanca contaPP = null;
         Banco admContas = null;
@@ -79,7 +80,7 @@ public class Main {
 
         System.out.println("Qual operação deseja realizar? ");
         System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                "%n4 - Simular Empréstimo %n5 - Simular Financiamento %n6 - Buscar Conta " +
+                "%n4 - Simular Empréstimo %n5 - Simular Investimento %n6 - Buscar Conta " +
                 "%n0 - Finalizar Aplicação %n");
         int operacao = sc.nextInt();
 
@@ -87,70 +88,115 @@ public class Main {
 
             if (cliente.ativarContaCorrente() || cliente.ativarContaPoupanca()) {
 
-                int opcao = 0;
-
-                    System.out.println("Digite o número da conta que deseja realizar a operação: ");
-                    int numConta = sc.nextInt();
+                System.out.println("Digite o número da conta que deseja realizar a operação: ");
+                int numConta = sc.nextInt();
 
                 switch (operacao) {
 
                     case 1:
-                            if(contaCC.getNumeroConta() == numConta) {
-                                   System.out.print("Digite o valor de saque: R$ ");
-                                   double valor = sc.nextDouble();
-                                   contaCC.sacar(valor);
-                                   contaCC.imprimirExtrato();
+                        if (contaCC.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor de saque: R$ ");
+                            double valor = sc.nextDouble();
+                            contaCC.sacar(valor);
+                            contaCC.imprimirExtrato();
 
-                            }
-                            if(contaPP.getNumeroConta() == numConta){
-                                System.out.print("Digite o valor de saque: R$ ");
-                                double valor = sc.nextDouble();
-                                contaPP.sacar(valor);
-                                contaPP.imprimirExtrato();
-                            }
+                        }
+                        if (contaPP.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor de saque: R$ ");
+                            double valor = sc.nextDouble();
+                            contaPP.sacar(valor);
+                            contaPP.imprimirExtrato();
+                        }
                         break;
 
                     case 2:
-                        if(cliente.getConta().equals(numConta)) {
-                            if(cliente.ativarContaCorrente()) {
-                                System.out.print("Digite o valor de depósito: R$ ");
-                                double valor = sc.nextDouble();
-                                contaCC.depositar(valor);
-                            }
-                            if(cliente.ativarContaPoupanca()){
-                                System.out.print("Digite o valor de depósito: R$ ");
-                                double valor = sc.nextDouble();
-                                contaPP.depositar(valor);
-                            }
+                        if (contaCC.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor de depósito: R$ ");
+                            double valor = sc.nextDouble();
+                            contaCC.depositar(valor);
+                            contaCC.imprimirExtrato();
+                        }
+                        if (contaPP.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor de depósito: R$ ");
+                            double valor = sc.nextDouble();
+                            contaPP.depositar(valor);
+                            contaPP.imprimirExtrato();
                         }
                         break;
 
                     case 3:
-                        System.out.printf("Digite: %n1 - Conta Corrente %n2 - Conta");
-                        if (opcao == 1 && cliente.ativarContaCorrente()) {
-                            System.out.print("Digite o valor e a conta que deseja transferir");
-                            System.out.print("Valor: R$ ");
+                        if (contaCC.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor da transferência R$ ");
                             double valor = sc.nextDouble();
-                            System.out.print("Dados da conta à transferir: ");
+                            contaCC.sacar(valor);
+                            System.out.println("Digite o numero da conta a receber  a tranferência: ");
+                            int contaReceberDepo = sc.nextInt();
+                            if (contaCC.getNumeroConta() == contaReceberDepo) {
+                                contaCC.depositar(valor);
+                                System.out.println("Depósito realizado com sucesso em Conta Corrente.");
+                            }
+                            if (contaPP.getNumeroConta() == contaReceberDepo) {
+                                contaPP.depositar(valor);
+                                System.out.println("Depósito realizado com sucesso em Conta Poupança.");
 
-                            //parei aqui
-
+                            }
+                            break;
                         }
-                        if (opcao == 2 && cliente.ativarContaPoupanca()) {
-                            System.out.print("Digite o valor de depósito: R$ ");
+                        if (contaPP.getNumeroConta() == numConta) {
+                            System.out.println("Digite o valor da transferência R$ ");
                             double valor = sc.nextDouble();
-                            contaPP.depositar(valor);
-                        } else {
-                            System.out.println("Cliente não possui conta ativa.");
+                            contaPP.sacar(valor);
+                            System.out.println("Digite o numero da conta a receber  a tranferência: ");
+                            int contaReceberDepo = sc.nextInt();
+                            if (contaCC.getNumeroConta() == contaReceberDepo) {
+                                contaCC.depositar(valor);
+                                System.out.println("Depósito realizado com sucesso em Conta Corrente.");
+                                System.out.println();
+                                contaCC.imprimirExtrato();
+                            }
+                            if (contaPP.getNumeroConta() == contaReceberDepo) {
+                                contaPP.depositar(valor);
+                                System.out.println("Depósito realizado com sucesso em Conta Poupança.");
+                                System.out.println();
+                                contaPP.imprimirExtrato();
+                            }
+                            break;
                         }
+                    case 4:
+                        System.out.print("Digite o valor que deseja simular o empréstimo: R$ ");
+                        double valorEmprestimo = sc.nextDouble();
+                        System.out.println("Digite quantas parcelas deseja pagar: ");
+                        int parcelas = sc.nextInt();
+                        contaCC.simularEmprestimo(valorEmprestimo, parcelas);
                         break;
 
+                    case 5:
+                        System.out.print("Digite o valor que deseja simular em investimento: R$ ");
+                        double valorInvestimento = sc.nextDouble();
+                        System.out.println("Digite a quantidade de meses que deseja deixar o dinheiro investindo: ");
+                        int meses = sc.nextInt();
+                        contaCC.simularInvestimento(valorInvestimento, meses);
+                        break;
 
+                    case 6:
+                        System.out.println("Digite o número da conta que está buscando: ");
+                        int numeroConta = sc.nextInt();
+                        conta.setNumeroConta(numeroConta);
+                        admContas.listarContas(conta);
+                        break;
+
+                    case 0:
+                        operacao = 0;
+                        break;
                 }
+            }
+            else{
+                System.out.println("Conta inativa.");
             }
             System.out.println("Deseja realizar outra operação? ");
             System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento %n0 - Finalizar Aplicação");
+                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento %n6 - Buscar Conta " +
+                    "%n0 - Finalizar Aplicação %n");
             operacao = sc.nextInt();
         }
     }

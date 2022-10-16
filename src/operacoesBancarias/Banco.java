@@ -32,6 +32,7 @@ public class Banco {
             if(numeroConta == c.getNumeroConta()){
                 System.out.println("Conta encontrada!");
                 controle = contaRecebida;
+                c.imprimirInfosConta();
             }
             if(numeroConta != c.getNumeroConta()){
                 System.out.println("Conta não encontrada!");
