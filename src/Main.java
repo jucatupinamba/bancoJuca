@@ -18,7 +18,7 @@ public class Main {
         Conta conta = null;
         ContaCorrente contaCC = null;
         ContaPoupanca contaPP = null;
-        Banco admContas = null;
+        Banco admContas = new Banco();
 
 
         System.out.println(" ==== Banco Juca - Um Banco Por Você =====");
@@ -42,6 +42,7 @@ public class Main {
                 cliente = new Cliente(nome, cpf, telefone);
                 cliente.ativarContaCorrente();
                 contaCC = new ContaCorrente(cliente);
+                admContas.addConta(contaCC);
 
                 System.out.println("Digite o valor do depósito inicial: R$ ");
                 double depoInit = sc.nextDouble();
@@ -221,6 +222,11 @@ public class Main {
                         sc.nextLine();
                         sc.nextLine();
                         break;
+
+                    case 6: System.out.println("Digite o numero da conta que deseja pesquisar: ");
+                        conta.setNumeroConta(sc.nextInt());
+                        conta.getNumeroConta();
+                        admContas.listarContas(conta);
 
                     case 0:
                         operacao = 0;
