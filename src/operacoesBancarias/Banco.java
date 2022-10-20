@@ -6,8 +6,6 @@ import java.util.List;
 public class Banco {
     private String nome;
 
-    private Conta contaAdm;
-
     private List<Conta> admConta = new ArrayList<>();
 
 
@@ -25,7 +23,7 @@ public class Banco {
     }
 
 
-    public void listarContas(Conta contaRecebida) {    //método em teste - provavel erro na lógica
+    public void listarContas(Conta contaRecebida) {                 //método de pesquisa de conta
         try {
             int numeroConta = contaRecebida.getNumeroConta();
             for (Conta c : admConta) {

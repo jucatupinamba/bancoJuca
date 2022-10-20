@@ -1,5 +1,4 @@
 import operacoesBancarias.Banco;
-import operacoesBancarias.Conta;
 import usuarios.Cliente;
 import operacoesBancarias.ContaCorrente;
 import operacoesBancarias.ContaPoupanca;
@@ -93,7 +92,7 @@ public class Main {
 
         System.out.println("Qual operação deseja realizar? ");
         System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                "%n4 - Simular Empréstimo %n5 - Simular Investimento " +
+                "%n4 - Simular Empréstimo %n5 - Simular Investimento " + "%6 - Pesquisar Conta" +
                 "%n0 - Finalizar Aplicação %n");
         int operacao = sc.nextInt();
 
@@ -241,7 +240,7 @@ public class Main {
             }
             System.out.println("Deseja realizar outra operação? ");
             System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento" +
+                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento" + "%6 - Pesquisar Conta" +
                     "%n0 - Finalizar Aplicação %n");
             operacao = sc.nextInt();
         }
