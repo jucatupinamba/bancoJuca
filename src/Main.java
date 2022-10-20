@@ -15,7 +15,6 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Cliente cliente = null;
-        Conta conta = null;
         ContaCorrente contaCC = null;
         ContaPoupanca contaPP = null;
         Banco admContas = new Banco();
@@ -224,9 +223,13 @@ public class Main {
                         break;
 
                     case 6: System.out.println("Digite o numero da conta que deseja pesquisar: ");
-                        conta.setNumeroConta(sc.nextInt());
-                        conta.getNumeroConta();
-                        admContas.listarContas(conta);
+                        contaCC.setNumeroConta(sc.nextInt());
+                        contaCC.getNumeroConta();
+                        admContas.listarContas(contaCC);
+                        System.out.println("Digite ENTER para continuar");
+                        sc.nextLine();
+                        sc.nextLine();
+                        break;
 
                     case 0:
                         operacao = 0;

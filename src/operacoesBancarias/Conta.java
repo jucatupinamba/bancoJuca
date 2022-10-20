@@ -24,6 +24,8 @@ public abstract class Conta implements IConta{
         this.cliente = cliente;
     }
 
+    public Conta(){}
+
     @Override
     public void sacar(double valor) {
         if(saldo > valor) {
