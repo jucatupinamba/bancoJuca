@@ -9,6 +9,10 @@ public class ContaCorrente extends Conta {
         super(cliente);
     }
 
+    public ContaCorrente() {
+
+    }
+
     @Override
     public void imprimirExtrato() {
         System.out.println("=== Extrato Operacoes Bancarias Conta Corrente ===");

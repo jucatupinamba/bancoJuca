@@ -5,17 +5,18 @@ import operacoesBancarias.ContaPoupanca;
 
 import java.util.Scanner;
 
-/* Desafio de Projeto Quebec Java Digital
-   Juarez Martins
+/*
+  @author Juarez Martins
+  Desafio de Projeto Quebec Java Digital
  */
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        Cliente cliente = null;
-        ContaCorrente contaCC = null;
-        ContaPoupanca contaPP = null;
+        Cliente cliente = new Cliente();
+        ContaCorrente contaCC = new ContaCorrente();
+        ContaPoupanca contaPP = new ContaPoupanca();
         Banco admContas = new Banco();
 
 
@@ -92,7 +93,7 @@ public class Main {
 
         System.out.println("Qual operação deseja realizar? ");
         System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                "%n4 - Simular Empréstimo %n5 - Simular Investimento " + "%6 - Pesquisar Conta" +
+                "%n4 - Simular Empréstimo %n5 - Simular Investimento %n6 - Pesquisar Conta" +
                 "%n0 - Finalizar Aplicação %n");
         int operacao = sc.nextInt();
 
@@ -197,8 +198,8 @@ public class Main {
                                 sc.nextLine();
                                 sc.nextLine();
                             }
-                            break;
                         }
+                        break;
                     case 4:
                         System.out.print("Digite o valor que deseja simular o empréstimo: R$ ");
                         double valorEmprestimo = sc.nextDouble();
@@ -240,7 +241,7 @@ public class Main {
             }
             System.out.println("Deseja realizar outra operação? ");
             System.out.printf("Digite %n1 - Saque %n2 - Deposito %n3 - Transferência" +
-                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento" + "%6 - Pesquisar Conta" +
+                    "%n4 - Simular Empréstimo %n5 - Simular Financiamento" + "%n6 - Pesquisar Conta" +
                     "%n0 - Finalizar Aplicação %n");
             operacao = sc.nextInt();
         }

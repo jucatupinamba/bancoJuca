@@ -20,8 +20,9 @@ public abstract class Conta implements IConta{
 
     public Conta(Cliente cliente){
         this.agencia = Conta.AGENCIA_PADRAO;
-        this.numeroConta = SEQUENCIAL++;
+        this.numeroConta = SEQUENCIAL;
         this.cliente = cliente;
+        SEQUENCIAL++;
     }
 
     public Conta(){}
@@ -89,10 +90,10 @@ public abstract class Conta implements IConta{
     @Override
     public void simularInvestimento(double valor, int meses){
         if(valor > 3000){
-            JUROS = 1.04;
+            JUROS = 1.01;
         }
         else if(valor < 5000){
-            JUROS = 1.10;
+            JUROS = 1.05;
         }
 
         double valorTotal = 0;
