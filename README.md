@@ -12,6 +12,7 @@ Um dos principais objetivos da aplicaç o desenvolvimento da Programação Orien
 * Saque (contém taxas variáveis)
 * Depósito
 * Transferência 
-* Simular Empréstimo
-* Simular Investimento
+* Simular Empréstimo (Contém taxas variáveis)
+* Simular Investimento (Contém taxas vari
+* Buscar Conta
 
