@@ -107,7 +107,7 @@ public class Main {
                 switch (operacao) {
 
                     case 1:
-                        if (contaCC.getNumeroConta() == numConta) {
+                        if (contaCC.getNumeroConta() == numConta) {  //pesquisar com nova lógica de busca de contas
                             System.out.println("Digite o valor de saque: R$ ");
                             double valor = sc.nextDouble();
                             contaCC.sacar(valor);

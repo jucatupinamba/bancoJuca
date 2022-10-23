@@ -22,8 +22,16 @@ public class Banco {
         return admConta;
     }
 
+    public boolean buscarNumeroConta(int numeroConta) {
+        for (int i = 0; i < admConta.size(); i++) {
+            if (admConta.get(i).getNumeroConta() == numeroConta) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-    public void listarContas(Conta contaRecebida) {                 //método de pesquisa de conta
+    public void listarContas(Conta contaRecebida) {                 //@param método de pesquisa de conta
         try {
             int numeroConta = contaRecebida.getNumeroConta();
             for (Conta c : admConta) {
